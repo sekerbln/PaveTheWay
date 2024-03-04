@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAVE THE WAY</title>
+  <style>
+    body {
+      background-color: #D7EDF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      text-align: center;
+      position: relative;
+    }
+
+    #startButton {
+      background-color: #5E9BD6;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-family: 'PP Neue Montreal', sans-serif;
+      font-size: 80px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(94, 155, 214, 0.2);
+      transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      position: relative;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #startButton:hover {
+      background-color: #4678AC;
+      box-shadow: 0 6px 12px rgba(94, 155, 214, 0.4);
+    }
+
+    #startButton:active {
+      transform: scale(0.98);
+    }
+
+    #mainImage {
+      margin-bottom: -250px;
+    }
+
+    #rotatePinContainer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 2;
+    }
+
+    #rotatePin {
+      width: 400px;
+      height: 400px;
+      animation: rotateAnimation 2s linear infinite;
+      transform-origin: center center;
+    }
+
+    #unityText {
+      font-family: 'Unity Text', sans-serif;
+      font-size: 100px;
+      color: #4678AC;
+      position: relative;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #unityText2 {
+      font-family: 'Unity Text', sans-serif;
+      font-size: 30px;
+      color: #4678AC;
+      position: relative;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes rotateAnimation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <img id="mainImage" src="Navigator.png" alt="Navigator Image" width="400" height="400">
+  <div id="rotatePinContainer">
+    <img id="rotatePin" src="RotatePin.png" alt="Rotate Pin" width="400" height="400">
+  </div>
+  <br>
+  <a href="#" id="startButton" onclick="startRotation()">Start</a>
+  <div id="unityText"></div>
+  <div id="unityText2"></div>
+</div>
+
+<script>
+  let isRotating = false;
+
+  function startRotation() {
+    const mainImage = document.getElementById('mainImage');
+    const rotatePinContainer = document.getElementById('rotatePinContainer');
+    const unityText = document.getElementById('unityText');
+    const unityText2 = document.getElementById('unityText2');
+
+    if (!isRotating) {
+      mainImage.src = 'WhiteBackground.png';
+      rotatePinContainer.style.display = 'block';
+      unityText.innerHTML = 'Pave The Way';
+      unityText2.innerHTML = 'The Launch of SRH Wald-Klinikum Gera Navigation Solutions';
+    } else {
+      mainImage.src = 'Navigator.png';
+      rotatePinContainer.style.display = 'none';
+      unityText.innerHTML = '';
+      unityText2.innerHTML = '';
+    }
+
+    isRotating = !isRotating;
+  }
+</script>
+
+</body>
+</html>
